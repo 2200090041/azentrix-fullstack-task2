@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Mini Trello - Login</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    background:#ecebff;
+    height:100vh;
+    margin:0;
+}
+
+.login-container{
+    width:100%;
+    height:100vh;   /* full screen */
+    margin:0;
+    border-radius:0; /* remove rounded corners */
+}
+.left-panel{
+    padding:60px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+.right-panel{
+    height:100vh;
+}
+.brand{
+    color:#5b3df5;
+    font-size:26px;
+    font-weight:700;
+    margin-bottom:70px;
+}
+
+.login-title{
+    font-size:52px;
+    font-weight:700;
+    color:#222;
+}
+
+.login-subtitle{
+    color:#666;
+    margin-bottom:40px;
+}
+
+.form-control{
+    height:55px;
+    border-radius:8px;
+    margin-top:8px;
+}
+
+.form-control:focus{
+    box-shadow:none;
+    border-color:#5b3df5;
+}
+
+.btn-login{
+    background:#5b3df5;
+    border:none;
+    height:52px;
+    border-radius:8px;
+    font-weight:600;
+}
+
+.btn-login:hover{
+    background:#4a2fe0;
+}
+
+.forgot-link{
+    text-decoration:none;
+    color:#5b3df5;
+    font-size:14px;
+}
+
+.register-link{
+    color:#5b3df5;
+    text-decoration:none;
+    font-weight:600;
+}
+
+.right-panel{
+    background:linear-gradient(
+        135deg,
+        #5b3df5,
+        #6d4bff,
+        #8a62ff
+    );
+    color:white;
+    text-align:center;
+    position:relative;
+    padding:60px;
+}
+
+.right-panel h1{
+    font-size:58px;
+    font-weight:700;
+    margin-top:20px;
+}
+
+.right-panel p{
+    margin-top:20px;
+    opacity:0.9;
+    font-size:16px;
+}
+
+.kanban-card{
+    background:white;
+    border-radius:20px;
+    padding:25px;
+    width:340px;
+    margin:50px auto;
+    color:#222;
+    box-shadow:0 15px 30px rgba(0,0,0,0.15);
+}
+
+.task{
+    background:#f4f6ff;
+    padding:12px;
+    border-radius:10px;
+    margin-bottom:12px;
+    text-align:left;
+}
+
+.task i{
+    color:#5b3df5;
+    margin-right:8px;
+}
+
+.footer-text{
+    position:absolute;
+    bottom:60px;
+    width:80%;
+    left:10%;
+}
+
+.footer-text h2{
+    font-weight:700;
+}
+
+</style>
+</head>
+<body>
+
+<div class="login-container row g-0">
+
+    <!-- LEFT SIDE -->
+
+    <div class="col-md-6 left-panel">
+
+        <div class="brand">
+            🚀 Mini Trello
+        </div>
+
+        <h1 class="login-title">
+            Login
+        </h1>
+
+        <p class="login-subtitle">
+            Manage projects, boards and tasks efficiently.
+        </p>
+
+        <form action="/login" method="post">
+
+            <div class="mb-4">
+
+                <label>Email</label>
+
+                <input type="email"
+                       name="email"
+                       class="form-control"
+                       placeholder="Enter your email"
+                       required>
+
+            </div>
+
+            <div class="mb-3">
+
+                <label>Password</label>
+
+                <input type="password"
+                       name="password"
+                       class="form-control"
+                       placeholder="Enter your password"
+                       required>
+
+            </div>
+
+            <div class="d-flex justify-content-between mb-4">
+
+                <div>
+                    <input type="checkbox">
+                    Remember me
+                </div>
+
+                <a href="/forgot-password"
+                   class="forgot-link">
+                    Forgot Password?
+                </a>
+
+            </div>
+
+            <button class="btn btn-login text-white w-100">
+                Login
+            </button>
+
+        </form>
+
+        <p class="text-danger text-center mt-3"
+           th:text="${error}">
+        </p>
+
+        <div class="mt-4 text-center">
+
+            Not registered yet?
+
+            <a href="/register"
+               class="register-link">
+                Create an Account
+            </a>
+
+        </div>
+
+    </div>
+
+    <!-- RIGHT SIDE -->
+
+    <div class="col-md-6 right-panel">
+
+        <h1>
+            Welcome to<br>
+            Mini Trello
+        </h1>
+
+        <p>
+            Organize projects, collaborate with your team,
+            assign tasks and track progress in one place.
+        </p>
+
+        <div class="kanban-card">
+
+            <h5 class="mb-4">
+                Project Board
+            </h5>
+
+            <div class="task">
+                <i class="fa-solid fa-list-check"></i>
+                Design Dashboard UI
+            </div>
+
+            <div class="task">
+                <i class="fa-solid fa-user-group"></i>
+                Assign Team Members
+            </div>
+
+            <div class="task">
+                <i class="fa-solid fa-check-circle"></i>
+                Complete Authentication
+            </div>
+
+        </div>
+
+        <div class="footer-text">
+
+            <h2>
+                Boost Productivity
+            </h2>
+
+            <p>
+                Build, manage and deliver projects faster
+                with Mini Trello.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
