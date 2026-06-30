@@ -6,8 +6,6 @@ The Multi-User Task Management System is a full-stack web application inspired b
 
 The application provides secure user authentication, role-based access control, real-time collaboration using polling, task assignment, notifications, calendar integration, and project analytics, making it suitable for small teams and organizations.
 
-This project was developed as part of the Azentrix Digital Services Full Stack Developer Internship Program.
-
 ## Features
 
 ### User Management
